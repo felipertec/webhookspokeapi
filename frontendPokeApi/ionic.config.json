@@ -1,0 +1,7 @@
+{
+  "name": "frontendPokeApi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
