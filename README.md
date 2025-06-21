@@ -3,7 +3,7 @@
 
 Desenvolver uma plataforma mobile para listagem e visualização de pokémons e a construção deste projeto foi usado ionic com angular. Todos os dados sobre os pokémons como nome, número, tipo, imagem e entre outras coisas, foram possíveis com o uso da API REST [PokéApi](https://pokeapi.co/).
 
-Esse projeto esta sendo criado a partir de um desafio proposto pela equipe do [umpontoseis](https://www.bsntecnologia.com.br/)
+Esse projeto esta sendo criado a partir de um desafio proposto pela equipe do [BSN Tecnologia](https://www.bsntecnologia.com.br/)
 
 ### Funcionalidades
 
