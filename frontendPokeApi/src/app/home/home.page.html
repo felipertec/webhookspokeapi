@@ -16,16 +16,25 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-item *ngFor="let pokemon of pokemons; let i = index">
+      <ion-item *ngFor="let pokemon of pokemons; let i = index" [routerLink]="pokemon.pokeIndex">
         <ion-thumbnail slot="start">
           <img alt="Silhouette of mountains" [src]="pokemon.image" />
         </ion-thumbnail>
-        <ion-label [innerText]="pokemon.name"></ion-label>
+        <ion-label>
+          <h2>{{pokemon.name}}</h2>
+          <p>#{{pokemon.pokeIndex}}</p>
+        </ion-label>
       </ion-item>      
     </ion-list>
   </ion-card-content>
 </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="loadPokemons(true, $event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="">
+
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </ion-grid>
-</ion-content>
+</ion-content>Carregar mais pokemons
 
 
