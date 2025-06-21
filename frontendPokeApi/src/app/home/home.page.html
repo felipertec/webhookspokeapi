@@ -1,21 +1,31 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>
-      Lista PokeApi
+      Pokedex - PokeApi
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <h1><strong>Pokemons: </strong></h1>
-    </ion-row>
 
-    <ion-row *ngFor="let pokemon of pokemons; let i = index">
-      <ion-item>
-          <h3 [innerText]="pokemon.name"></h3>
-      </ion-item>
-    </ion-row>
+<ion-content>
+  <ion-grid>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Pokemons - 1º geração</ion-card-title>
+    <ion-card-subtitle>Selecione 1 para mais detalhes</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let pokemon of pokemons; let i = index">
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" [src]="pokemon.image" />
+        </ion-thumbnail>
+        <ion-label [innerText]="pokemon.name"></ion-label>
+      </ion-item>      
+    </ion-list>
+  </ion-card-content>
+</ion-card>
   </ion-grid>
 </ion-content>
+
+
