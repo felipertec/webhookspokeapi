@@ -9,9 +9,18 @@ export class HttpService {
 
   baseUrl = 'https://pokeapi.co/api/v2'
   imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+  gifUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/'
   constructor(
     private http: HttpClient
   ) { }
+
+
+  primeiraLetraMaiuscula(str: string) {
+  if (str.length === 0) {
+    return str;
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
   getPokemons(offset: number = 0){
     return this.http.get(`${this.baseUrl}/pokemon?offset=${offset}&limit=25`).pipe(map(result => {
@@ -29,5 +38,20 @@ export class HttpService {
 
   getImagePokemon(index: number){
     return `${this.imageUrl}${index}.png`
+  }
+
+  getGifPokemon(index: number){
+    return `${this.gifUrl}${index}.gif`
+  }
+
+  getPokemonsDetails(index: number){
+    return this.http.get(`${this.baseUrl}/pokemon/${index}`).pipe(map((pokemon: any) => ({
+      name: pokemon.name,
+      height: pokemon.height,
+      weight: pokemon.weight, 
+      id: pokemon.id,
+      sprite: pokemon.sprites.other.showdown.front_default
+    }))
+  )
   }
 }
