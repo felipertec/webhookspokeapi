@@ -38,7 +38,7 @@ export class HomePage implements OnInit {
           event.target.complete();
         }
 
-        if(this.offset === 125){
+        if(this.offset === 25){
           this.infinite.disabled = true;
         }
     })

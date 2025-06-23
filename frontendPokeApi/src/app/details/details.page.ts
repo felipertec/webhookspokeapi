@@ -17,6 +17,8 @@ import { HttpService } from '../services/http.service';
 export class DetailsPage implements OnInit {
 
   details: any
+  isEnabledTechnicalSheet: boolean = true;
+  isEnabledSkills: boolean = false;
   constructor(private route: ActivatedRoute, private httpService: HttpService) { }
 
   ngOnInit() {
@@ -28,6 +30,16 @@ export class DetailsPage implements OnInit {
       })
     }
     
+  }
+  
+  technicalSheetTab(){
+    this.isEnabledTechnicalSheet = true;
+    this.isEnabledSkills = false;
+  }
+  
+  skillsTab(){
+    this.isEnabledTechnicalSheet = false;
+    this.isEnabledSkills = true;
   }
 
 }

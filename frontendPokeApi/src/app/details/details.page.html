@@ -10,30 +10,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="grass">
+<ion-content>
   <ion-grid *ngIf="details">
-    <ion-row class="ion-justify-content-center ion-padding-top backgroundPadding">
-        <img [src]="details.sprite" alt="{{details.name}}">
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="6" class="ion-text-center ion-text-capitalize field">
-        <h1 style="color: #2f4538;">{{details.name}}</h1>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="10" class="window ion-text-capitalize ion-text-center">
-        <h3 style="color: #2f4538; margin-bottom: 10px; font-weight: 700;" class="ion-text-center">Ficha Tecnica</h3>
-        <p>Altura: {{details.height}}</p>
-        <p>Peso: {{details.weight}}</p>
-        <h3 style="color: #2f4538; margin: 10px 0; font-weight: 700;" class="ion-text-center">Categoria</h3>
-        <p *ngFor="let type of details.types">{{type.translatedName}}</p>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <!-- Caso isEnabledTechnicalSheet -->
+
+    <ion-grid *ngIf="isEnabledTechnicalSheet">
+      <ion-row class="ion-justify-content-center ion-padding-top backgroundPadding">
+            <img [src]="details.sprite" alt="{{details.name}}">
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="6" class="ion-text-center ion-text-capitalize field">
+            <h1 style="color: #2f4538;">{{details.name}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="10" class="window ion-text-capitalize ion-text-center">
+            <h3 style="color: #2f4538; margin-bottom: 10px; font-weight: 700;" class="ion-text-center">Ficha Tecnica</h3>
+            <p>Altura: {{details.height}}</p>
+            <p>Peso: {{details.weight}}</p>
+            <h3 style="color: #2f4538; margin: 10px 0; font-weight: 700;" class="ion-text-center">Categoria</h3>
+            <p *ngFor="let type of details.types">{{type.translatedName}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-grid>
+
+    <!-- Caso isEnabledSkills -->
+
+    <ion-grid *ngIf="isEnabledSkills">
+       <ion-row class="ion-justify-content-center ion-padding-top backgroundPadding">
+            <img [src]="details.sprite" alt="{{details.name}}">
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="6" class="ion-text-center ion-text-capitalize field">
+            <h1 style="color: #2f4538;">{{details.name}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="10" class="window ion-text-capitalize ion-text-center">
+            <h3 style="color: #2f4538; margin: 10px 0; font-weight: 700;" class="ion-text-center">Habilidades</h3>
+            <p *ngFor="let ability of details.abilities">{{ability.skill}}</p>
+            <h3 style="color: #2f4538; margin: 10px 0; font-weight: 700;" class="ion-text-center">Edições</h3>
+            <p>{{details.versions}}</p>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
   <ion-grid>
     <ion-row style="margin-top: 5px;" class="ion-justify-content-center">
-      <ion-button style="margin-right: 12px;" color="primary">Ficha</ion-button>
-      <ion-button color="danger">Habilidades</ion-button>
+      <ion-button id="btnTechnicalSheet" style="margin-right: 12px;" color="primary" (click)="technicalSheetTab()" [disabled]="isEnabledTechnicalSheet">Ficha</ion-button>
+      <ion-button id="btnSkill" color="danger" (click)="skillsTab()" [disabled]="isEnabledSkills">Habilidades</ion-button>
     </ion-row>
   </ion-grid> 
 </ion-content>

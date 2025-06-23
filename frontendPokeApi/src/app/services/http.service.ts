@@ -75,7 +75,12 @@ export class HttpService {
       types: pokemon.types.map((type: any) => ({
         ...type,
         translatedName: this.typeTranslations[type.type.name] || type.type.name
-      }))
+      })),
+      abilities: pokemon.abilities.map((ability: any) => ({
+        ...ability,
+        skill: ability.ability.name
+      })),
+      versions: pokemon.game_indices.map((gameIndice: any) => gameIndice.version.name).join(', ')
     }))
   )
   }
