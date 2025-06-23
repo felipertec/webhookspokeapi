@@ -44,13 +44,38 @@ export class HttpService {
     return `${this.gifUrl}${index}.gif`
   }
 
+ typeTranslations: any = {
+    normal: 'normal',
+    fire: 'fogo',
+    water: 'água',
+    electric: 'elétrico',
+    grass: 'grama',
+    ice: 'gelo',
+    fighting: 'lutador',
+    poison: 'venenoso',
+    ground: 'terra',
+    flying: 'voador',
+    psychic: 'psíquico',
+    bug: 'inseto',
+    rock: 'pedra',
+    ghost: 'fantasma',
+    dark: 'noturno',
+    dragon: 'dragão',
+    steel: 'aço',
+    fairy: 'fada'
+ }
+
   getPokemonsDetails(index: number){
     return this.http.get(`${this.baseUrl}/pokemon/${index}`).pipe(map((pokemon: any) => ({
       name: pokemon.name,
       height: pokemon.height,
       weight: pokemon.weight, 
       id: pokemon.id,
-      sprite: pokemon.sprites.other.showdown.front_default
+      sprite: pokemon.sprites.other.showdown.front_default,
+      types: pokemon.types.map((type: any) => ({
+        ...type,
+        translatedName: this.typeTranslations[type.type.name] || type.type.name
+      }))
     }))
   )
   }

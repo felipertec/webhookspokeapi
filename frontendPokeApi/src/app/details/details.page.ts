@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonCol, IonContent, IonGrid, IonHeader, IonRow, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonBackButton, IonButton, IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonRow, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../services/http.service';
 
@@ -11,12 +11,12 @@ import { HttpService } from '../services/http.service';
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow,IonCol]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow,IonCol,IonButton,IonBackButton,IonButtons]
 })
+
 export class DetailsPage implements OnInit {
 
   details: any
-
   constructor(private route: ActivatedRoute, private httpService: HttpService) { }
 
   ngOnInit() {
@@ -27,6 +27,7 @@ export class DetailsPage implements OnInit {
         this.details = data;
       })
     }
+    
   }
 
 }

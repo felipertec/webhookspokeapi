@@ -4,7 +4,25 @@
     box-sizing: border-box;
 }
 
-.fundo{
-    padding-top: 20px;
-    background-color: orange;
+.backgroundPadding{
+    padding-top: 10px;
+}
+
+
+.field{
+    margin-top: 5px;
+    border-radius: 5px;
+    text-align: center;
+    background: white;
+    color: black;
+}
+
+.window{
+    margin-top: 10px;
+    padding: 0 10px;
+    background-color: #6a8e58;
+    color: black;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
 }
