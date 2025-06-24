@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonGrid, IonRow, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonLabel, IonThumbnail, IonList, IonCardContent, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonGrid, IonRow, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonLabel, IonThumbnail, IonList, IonCardContent, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar, IonAvatar, IonSkeletonText } from '@ionic/angular/standalone';
 import { HttpService } from '../services/http.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['home.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, IonGrid,IonCard,IonCardHeader,
             IonCardTitle,IonCardSubtitle,IonItem,IonLabel,IonThumbnail,IonList,IonCardContent,
-            RouterModule, IonInfiniteScroll, IonInfiniteScrollContent],
+            RouterModule, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar,IonAvatar, IonSkeletonText],
 })
 export class HomePage implements OnInit {
 
@@ -38,9 +38,25 @@ export class HomePage implements OnInit {
           event.target.complete();
         }
 
-        if(this.offset === 25){
+        if(this.offset === 125){
           this.infinite.disabled = true;
         }
+    })
+  }
+
+  onSearchChange(e: any){
+    let value = e.detail.value;
+
+    if(value == ''){
+      this.offset = 0;
+      this.loadPokemons();
+      return;
+    }
+
+    this.httpService.findPokemon(value).subscribe(res => {
+      this.pokemons = [res];
+    }, err => {
+      this.pokemons = [];
     })
   }
 }

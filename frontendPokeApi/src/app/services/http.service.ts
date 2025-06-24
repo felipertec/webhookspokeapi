@@ -36,13 +36,10 @@ export class HttpService {
     )
   }
 
-  getImagePokemon(index: number){
+  getImagePokemon(index: any){
     return `${this.imageUrl}${index}.png`
   }
 
-  getGifPokemon(index: number){
-    return `${this.gifUrl}${index}.gif`
-  }
 
  typeTranslations: any = {
     normal: 'normal',
@@ -83,5 +80,17 @@ export class HttpService {
       versions: pokemon.game_indices.map((gameIndice: any) => gameIndice.version.name).join(', ')
     }))
   )
+  }
+
+  findPokemon(search: string){
+    return this.http.get(`${this.baseUrl}/pokemon/${search}`).pipe(
+      map((pokemon: any) => {
+        return {
+          ...pokemon,
+          image: this.getImagePokemon(pokemon.id),
+          pokeIndex: pokemon.id
+        }
+      })
+    )
   }
 }
