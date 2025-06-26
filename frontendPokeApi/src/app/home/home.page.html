@@ -47,6 +47,12 @@
           <h2>{{pokemon.name}}</h2>
           <p>#{{pokemon.pokeIndex}}</p>
         </ion-label>
+        <ion-icon
+          [name]="isFavorite(pokemon) ? 'heart' : 'heart-outline'"
+          color="danger"
+          slot="end"
+          (click)="toggleFavorite(pokemon); $event.stopPropagation()"
+        ></ion-icon>
       </ion-item>      
     </ion-list>
   </ion-card-content>
@@ -58,6 +64,6 @@
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-grid>
-</ion-content>Carregar mais pokemons
+</ion-content>
 
 

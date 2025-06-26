@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonGrid, IonRow, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonLabel, IonThumbnail, IonList, IonCardContent, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar, IonAvatar, IonSkeletonText } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonGrid, IonRow, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonLabel, IonThumbnail, IonList, IonCardContent, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar, IonAvatar, IonSkeletonText, IonIcon } from '@ionic/angular/standalone';
 import { HttpService } from '../services/http.service';
+import { FavoritesService } from '../services/favorites.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -10,7 +11,8 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['home.page.scss'],
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, CommonModule, IonGrid,IonCard,IonCardHeader,
             IonCardTitle,IonCardSubtitle,IonItem,IonLabel,IonThumbnail,IonList,IonCardContent,
-            RouterModule, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar,IonAvatar, IonSkeletonText],
+            RouterModule, IonInfiniteScroll, IonInfiniteScrollContent, IonSearchbar,IonAvatar, IonSkeletonText,
+            IonIcon],
 })
 export class HomePage implements OnInit {
 
@@ -19,7 +21,8 @@ export class HomePage implements OnInit {
   @ViewChild(IonInfiniteScroll) infinite!: IonInfiniteScroll;
 
   constructor(
-    private httpService: HttpService
+    private httpService: HttpService,
+    private favoriteService: FavoritesService
   ) {}
 
   ngOnInit(): void {
@@ -64,5 +67,17 @@ export class HomePage implements OnInit {
     }, err => {
       this.pokemons = [];
     })
+  }
+
+  toggleFavorite(pokemon: any){
+      if (this.favoriteService.isFavorite(pokemon)) {
+      this.favoriteService.removeFavorite(pokemon);
+      } else {
+        this.favoriteService.addFavorite(pokemon);
+      }
+  }
+
+  isFavorite(pokemon: any): boolean{
+    return this.favoriteService.isFavorite(pokemon);
   }
 }
