@@ -8,11 +8,12 @@ import { provideHttpClient } from '@angular/common/http';
 
 
 import { addIcons } from 'ionicons'
-import { heart, heartOutline } from 'ionicons/icons'
+import { heart, heartOutline, home,} from 'ionicons/icons'
 
 addIcons({
   'heart': heart,
-  'heart-outline': heartOutline
+  'heart-outline': heartOutline,
+  'home': home
 })
 
 

@@ -8,6 +8,10 @@ export class FavoritesService {
 
   constructor() { }
 
+  getFavorites(){
+    return this.favorites;
+  }
+
   addFavorite(pokemon: any){
     if(!this.isFavorite(pokemon)){
       this.favorites.push(pokemon);
