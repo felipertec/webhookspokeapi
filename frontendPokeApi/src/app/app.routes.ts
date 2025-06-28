@@ -29,8 +29,7 @@ export const routes: Routes = [
     ],
   },
   {
-        path: 'home/:pokeIndex',
-        loadComponent: () =>
-          import('./details/details.page').then((m) => m.DetailsPage)
+         path: 'home/:index',
+    loadComponent: () => import('./details/details.page').then( m => m.DetailsPage)
   },
 ];

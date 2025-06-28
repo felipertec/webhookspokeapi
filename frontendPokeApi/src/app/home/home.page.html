@@ -39,9 +39,9 @@
 
 
         <ion-list>
-          <ion-item *ngFor="let pokemon of pokemons; let i = index" [routerLink]="['/tabs/home', pokemon.pokeIndex]">
+          <ion-item *ngFor="let pokemon of pokemons; let i = index" [routerLink]="['/home', pokemon.pokeIndex]">
             <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" [src]="pokemon.image" />
+              <img alt="{{pokemon.name}}" [src]="pokemon.image" />
             </ion-thumbnail>
             <ion-label>
               <h2>{{pokemon.name}}</h2>

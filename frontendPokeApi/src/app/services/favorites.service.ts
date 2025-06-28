@@ -9,6 +9,7 @@ export class FavoritesService {
   constructor() { }
 
   getFavorites(){
+    console.log(this.favorites);
     return this.favorites;
   }
 
@@ -20,6 +21,7 @@ export class FavoritesService {
 
   removeFavorite(pokemon: any){
     this.favorites = this.favorites.filter(p => p.name !== pokemon.name)
+    this.favorites = this.favorites.filter(p => p.url !== pokemon.url)
   }
 
   isFavorite(pokemon: any): boolean{

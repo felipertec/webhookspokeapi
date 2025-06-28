@@ -69,15 +69,22 @@ export class HomePage implements OnInit {
     })
   }
 
+ 
+
   toggleFavorite(pokemon: any){
       if (this.favoriteService.isFavorite(pokemon)) {
       this.favoriteService.removeFavorite(pokemon);
       } else {
         this.favoriteService.addFavorite(pokemon);
       }
+      this.isFavoriteLoad();
   }
 
   isFavorite(pokemon: any): boolean{
     return this.favoriteService.isFavorite(pokemon);
+  }
+
+   isFavoriteLoad(){
+    return this.favoriteService.getFavorites();
   }
 }
